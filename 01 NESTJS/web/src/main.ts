@@ -1,10 +1,11 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import {NestFactory} from '@nestjs/core';
+import {AppModule} from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+    const app = await NestFactory.create(AppModule);
+    await app.listen(3000);
 }
+
 bootstrap();
 // package.json
 // npm run start
@@ -39,21 +40,142 @@ cualquierCosa = true;
 cualquierCosa = new Date();
 
 class Usuario {
-  constructor(
-      public nombre: string,
-      public apellido: string
-  ) {
-  }
+    constructor(
+        public nombre: string,
+        public apellido: string
+    ) {
+    }
 }
+
 const usuario: Usuario = new Usuario('Adrian', 'Eguez');
 usuario.nombre;
 usuario.apellido;
 
 interface UsuarioInterface {
-  nombre: string;
-  apellido: string;
-  edad? : number; // ? => Opcional // Valor por defecto es undefined
+    nombre: string;
+    apellido: string;
+    edad?: number; // ? => Opcional // Valor por defecto es undefined
 }
+
+let objetoUsuario: UsuarioInterface = {
+    nombre: 'Adrian',
+    apellido: 'Eguez',
+};
+objetoUsuario.nombre;
+objetoUsuario.apellido;
+objetoUsuario.edad;
+console.log(usuario);
+console.log(objetoUsuario);
+
+// PUNTEROS REFERENCIAS
+
+// PRIMITIVAS
+let edadAntigua = 22;
+let otraEdad = edadAntigua; // VALOR
+edadAntigua += 1; // 23
+otraEdad -= 1; // 21
+
+// Objeto
+let objetoEdad = {
+    edad: 22,
+};
+let otraEdadObjeto = objetoEdad; // REFERENCIA
+otraEdadObjeto.edad = otraEdadObjeto.edad + 1; // 23
+console.log(otraEdadObjeto.edad);
+objetoEdad.edad; // 23
+console.log(otraEdadObjeto.edad);
+objetoEdad.edad = objetoEdad.edad + 1; // 24
+otraEdadObjeto.edad; // 24
+let otraEdadObjetoClonado = {...objetoEdad}; // Clonación Objetos
+const arregloEjemplo = [1, 2, 3]
+let arregloClonado = [...arregloEjemplo]; // Clonación Arreglos
+
+// Arreglos
+
+const arregloTodo = [1, '', true, null, new Date()];
+const arregloNumeros: number[] = [1, 2, 3, 4, 5];
+
+function funcionConNombre() {
+}
+
+const indice = arregloNumeros
+    .findIndex(
+        (numero) => { // Funcion Anonima xq no tiene nombre
+            const elValorEsIgualAtres: boolean = numero === 3;
+            return elValorEsIgualAtres  // Condicion -> boolean
+        },
+        // function () { -> Funcion Anonima xq no tiene nombre
+        //
+        // }
+    );
+arregloNumeros[indice] = 6
+// agregar al final
+arregloNumeros.push(6)
+// agregar al principio
+arregloNumeros.unshift(0)
+
+// CONDICIONES -> Truty y Falsy
+const numeroOrden = 0;
+if (numeroOrden) {
+  console.log('Truty');
+} else {
+  console.log('Falsy'); // FALSY
+}
+if (1) {
+  console.log('Truty'); // TRUTY
+} else {
+  console.log('Falsy');
+}
+if (-1) {
+    console.log('Truty'); // TRUTY
+} else {
+    console.log('Falsy');
+}
+if ("") {
+    console.log('Truty');
+} else {
+    console.log('Falsy'); // FALSY
+}
+if ("a") {
+    console.log('Truty'); // TRUTY
+} else {
+    console.log('Falsy');
+}
+if ({}) {
+    console.log('Truty');
+} else {
+    console.log('Falsy'); // FALSY
+}
+if ({a:1}) {
+    console.log('Truty'); // TRUTY
+} else {
+    console.log('Falsy');
+}
+if ([]) {
+    console.log('Truty');
+} else {
+    console.log('Falsy'); // FALSY
+}
+if ([1]) {
+    console.log('Truty');// TRUTY
+} else {
+    console.log('Falsy');
+}
+if (null) {
+    console.log('Truty');
+} else {
+    console.log('Falsy'); // FALSY
+}
+if (undefined) {
+    console.log('Truty');
+} else {
+    console.log('Falsy'); // FALSY
+}
+
+
+
+
+
 
 
 
