@@ -3,10 +3,51 @@ import {AppModule} from './app.module';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
-    await app.listen(3000);
+    await app.listen(3000); // PUERTO
+    // package.json
+    // npm run start
 }
 
 bootstrap();
+
+
+
+
+/*
+
+
+abstract class Nombre {
+    public nombrePropiedad?: string; // undefined
+    private apellidoPropiedad: string = 'Eguez';
+    protected edad = 1; // number (Duck Typing)
+    static comun: number = 10;
+    propiedadPublica: string;
+    constructor(
+        propiedadPublicaParametro: string, // parametro
+        public propiedadRapido: string, // transforma una propiedad
+    ) {
+        this.propiedadPublica = propiedadPublicaParametro;
+        this.propiedadRapido;
+    }
+
+    public funcionPublica(parametroString: string): void {
+        // no hay return = undefined
+    }
+
+    private funcionPrivada(parametroString: string, // ? = puede ser undefined
+                           parametroNumber?: number)  { // omitir :void (defecto)
+        // no hay return = undefined
+    }
+
+    protected funcionPublica(): number {
+        return 1;
+    }
+
+    static funcionEstatica(): string {
+        return 'string';
+    }
+
+}
 // package.json
 // npm run start
 // nodejs command prompt
@@ -174,7 +215,7 @@ if (undefined) {
 
 
 
-
+*/
 
 
 
