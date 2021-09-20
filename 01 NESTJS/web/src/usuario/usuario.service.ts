@@ -10,9 +10,9 @@ export class UsuarioService {
   ) {}
 
   buscarMuchos(parametrosBusqueda: {
-    skip?: number;
-    take?: number;
-    busqueda?: string;
+    skip?: number; // registros que te saltes 0 10 20
+    take?: number; // registros tomas 10 10 10
+    busqueda?: string; // Adr
     // orderBy?: Prisma.EPN_UsuarioOrder;
   }) {
     const or = parametrosBusqueda.busqueda
