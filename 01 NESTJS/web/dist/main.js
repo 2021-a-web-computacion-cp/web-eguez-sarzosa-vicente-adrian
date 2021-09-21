@@ -19,7 +19,7 @@ async function bootstrap() {
         cookie: { secure: false },
         store: new FileStore(),
     }));
-    await app.listen(3000);
+    await app.listen(3001);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map

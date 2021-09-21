@@ -6,6 +6,7 @@ import {
   InternalServerErrorException,
   Param,
   Post,
+  Query,
   Res,
 } from '@nestjs/common';
 import { UsuarioService } from './usuario.service';
@@ -25,9 +26,29 @@ export class UsuarioController {
     response.render('inicio');
   }
 
+
+  @Get('vista-crear')
+  vistaCrear(@Res() response) {
+    response.render('usuario/crear');
+  }
+
   @Get('lista-usuarios')
-  listaUsuarios(@Res() response) {
-    response.render('usuario/lista');
+  async listaUsuarios(@Res() response, @Query() parametrosConsulta) {
+    try {
+      // validar parametros de consulta con un dto
+      const respuesta = await this.usuarioService.buscarMuchos({
+        skip: parametrosConsulta.skip ? +parametrosConsulta.skip : undefined,
+        take: parametrosConsulta.take ? +parametrosConsulta.take : undefined,
+        busqueda: parametrosConsulta.busqueda ? parametrosConsulta.busqueda : undefined,
+      });
+      response.render('usuario/lista', {
+        datos: {
+          usuarios: respuesta,
+        },
+      });
+    } catch (error) {
+      throw new InternalServerErrorException('Error del servidor');
+    }
   }
 
   @Get(':idUsuario')

@@ -24,7 +24,7 @@ async function bootstrap() {
       store: new FileStore(),
     }),
   );
-  await app.listen(3000); // PUERTO
+  await app.listen(3001); // PUERTO
   // package.json
   // npm run start
 }

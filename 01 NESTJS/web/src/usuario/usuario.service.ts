@@ -23,6 +23,7 @@ export class UsuarioService {
           ],
         }
       : {};
+    console.log(or);
     return this.prisma.ePN_USUARIO.findMany({
       where: or,
       take: Number(parametrosBusqueda.take) || undefined,
